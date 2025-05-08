@@ -18,7 +18,7 @@ async def tool1(request: Request)-> dict:
 
     df = pd.merge(projects_df, university_df, left_on='uczelnia', right_on='id', suffixes=('_projekt', '_uczelnia') )
     print(df)
-    answer = df[df['nazwa_projekt'].str.contains(input_text, case=False)]
+    answer = df[df['nazwa_projekt'].str.contains(input_text, case=False, na=False)]
     output = []
     if not answer.empty:
         for _, row in answer.iterrows():

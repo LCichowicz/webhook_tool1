@@ -12,7 +12,7 @@ async def tool1(request: Request)-> dict:
     university_df = pd.read_json(file_3)
     data = await request.json()
     input_text = data.get('input', "")
-    if input_text.startswith("test"):
+    if input_text.startswith("test") or input_text == "":
         return {'output': input_text}
 
 
@@ -30,7 +30,8 @@ async def tool1(request: Request)-> dict:
     while len('\n'.join(output)) > 1024:
         output.pop()
                            
-
+    print(f"Input text: {input_text}")
+    print(f"Output: {output}")
     return {'output': '\n'.join(output)}
 
 

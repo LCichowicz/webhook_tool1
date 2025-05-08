@@ -11,7 +11,7 @@ async def tool1(request: Request)-> dict:
     projects_df = pd.read_json(file_1)
     university_df = pd.read_json(file_3)
     data = await request.json()
-    input_text = data['input']
+    input_text = data.get('input', "")
     if input_text.startswith("test"):
         return {'output': input_text}
 

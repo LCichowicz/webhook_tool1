@@ -30,7 +30,8 @@ async def tool1(request: Request)-> dict:
     while len('\n'.join(output)) > 1024:
         output.pop()
                            
-
+    print(f"Input text: {input_text}")
+    print(f"Output: {output}")
     return {'output': '\n'.join(output)}
 
 
